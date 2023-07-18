@@ -1,0 +1,44 @@
+{
+  "development": {
+    "username": "Thiago38almeida",
+    "password": "9LdAOBXJpl8Q",
+    "database": "bemEstar",
+    "host": "ep-blue-resonance-747536.us-east-2.aws.neon.tech",
+    "dialect": "postgres",
+    "ssl": true,
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false 
+      }
+    }
+  },
+  "test": {
+    "username": "Thiago38almeida",
+    "password": "9LdAOBXJpl8Q",
+    "database": "bemEstar",
+    "host": "ep-blue-resonance-747536.us-east-2.aws.neon.tech",
+    "dialect": "postgres",
+    "ssl": true,
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false 
+      }
+    }
+  },
+  "production": {
+    "username": "Thiago38almeida",
+    "password": "9LdAOBXJpl8Q",
+    "database": "bemEstar",
+    "host": "ep-blue-resonance-747536.us-east-2.aws.neon.tech",
+    "dialect": "postgres",
+    "ssl": true,
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false 
+      }
+    }
+  }
+}
