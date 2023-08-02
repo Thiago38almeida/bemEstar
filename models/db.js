@@ -1,4 +1,6 @@
 const { Sequelize } = require('sequelize');
+const pg = require('pg')
+const pghstore = require('pg-hstore')
 require('dotenv').config();
 
 const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env;
@@ -15,8 +17,20 @@ const db = new Sequelize(PGDATABASE, PGUSER, PGPASSWORD, {
   }
 });
 
+/*
+const db2 = new Sequelize('calendar', 'root', '', {
+  host:'localhost' || '127.0.0.1',
+  port :3306,
+  dialect: 'mysql',
+  logging:(sql)=>{console.log("SQL:", sql)},
+  pool:{}
+
+})
+*/
+
 try {
-   db.authenticate();
+  db.authenticate();
+  // mundial.authenticate();
   console.log('Connection has been established successfully.');
 } catch (error) {
   console.error('Unable to connect to the database:', error);

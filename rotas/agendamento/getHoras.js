@@ -28,7 +28,7 @@ const Agendamento = require('../../models/agendamento');
      
     });
 
-    console.log(horarios)
+    //console.log(horarios)
 
   
       
@@ -44,7 +44,7 @@ const Agendamento = require('../../models/agendamento');
           }
             });
 
-        console.log(horariosServico) 
+      //  console.log(horariosServico) 
            
       let agenda = [];
       let lastday = moment(data)
@@ -60,7 +60,7 @@ const Agendamento = require('../../models/agendamento');
        ).length;
 
 
-       console.log(servicoSlices)
+      // console.log(servicoSlices)
      
       /*
           VERIFICAR EM 365 SE TEM
@@ -166,7 +166,7 @@ const Agendamento = require('../../models/agendamento');
           return horarioLivre
         }
          }), '-').filter(space => space.length > 0)
-         // console.log(horariosLivres)
+         console.log(horariosLivres)
            
                     
           horariosLivres = horariosLivres.filter(

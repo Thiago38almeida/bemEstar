@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken');
 const LoginUsers = async (req, res) => {
   const { email, senha } = req.body;
 
- 
+ // console.log(email, senha)
 
   try {
     const user = await users.findOne({
@@ -28,7 +28,7 @@ const LoginUsers = async (req, res) => {
 
     
 
-    if (!(bcrypt.compareSync(req.body.senha, user.senha))) {
+    if (!(bcrypt.compareSync(senha, user.senha))) {
       return res.status(400).json({
         erro: true,
         mensagem: 'Usuário ou senha inválida2'
@@ -36,19 +36,45 @@ const LoginUsers = async (req, res) => {
     }
 
     const token = jwt.sign({ id:[ user.email, user.nome, user.especialidade ]}, "V@lId@Ç^@70K3N#$%)(*!@#", {
-      expiresIn: '7d'
+      algorithm: 'HS256',
+      expiresIn: '24h'
     });
 
+     
     //token =  req.headers.authorization
 
     let telasRenderizada = '';
 
-
-      if (user.especialidade === "psicologaGLP" || "psicologaMatriz") {
+    switch (user.nome) {
+      case "psicologaGLP":
         telasRenderizada = 'UserPsicologa'
-        } else if (user.especialidade === "massoterapiaGLP" || "massoterapiaMatriz") {
+        
+        break;
+        case "psicologaMatriz":
           telasRenderizada = 'UserPsicologa'
-}
+          
+          break;
+          case "massoterapiaGLP":
+            telasRenderizada = 'UserMasso'
+            
+            break;
+            case "massoterapiaMatriz":
+              telasRenderizada = 'UserMasso'
+              
+              break;
+    
+      default:
+        break;
+    }
+/*
+      if (user.nome === "psicologaGLP" || "psicologaMatriz") {
+        telasRenderizada = 'UserMasso'
+        } 
+        else if (user.nome === "massoterapiaGLP" || "massoterapiaMatriz") {
+          telasRenderizada = 'UserMasso'
+}*/
+
+//console.log(telasRenderizada)
     
   
     return res.json({

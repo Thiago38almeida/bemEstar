@@ -15,7 +15,7 @@ const {id} = req.params;
     res.json(agendamentos);
     })
     .catch(err => {
-        res.json(err);
+      res.status(500).json({ error: "Erro interno do servidor", err });
         });
         }
 

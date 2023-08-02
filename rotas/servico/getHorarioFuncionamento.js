@@ -8,7 +8,7 @@ const GethorarioFuncionamento = async (req, res) => {
     const especialidade = req.params.especialidade;
     const colaboradorId = req.params.colaboradorId;
 
-    console.log(especialidade, colaboradorId)
+   // console.log(especialidade, colaboradorId)
 
     try{
     const response = await horarioFuncionamento.findAll({

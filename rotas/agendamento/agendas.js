@@ -1,8 +1,5 @@
 const Agendamento = require('../../models/agendamento')
 const { Op } = require('sequelize')
-const moment = require('moment');
-const servico = require('../../models/servico');
-const logSystem = require('../../logs/logsSystem');
 
 const Agendamentos = async (req, res) => {
   const  servicoId  = req.params.user;

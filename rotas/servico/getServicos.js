@@ -1,10 +1,10 @@
-const servico = require('../../models/servico')
+const {servico} = require('../../models/servico')
 const {Op} = require('sequelize')
 
 
 const Getservico = async (req, res) => {
     const {servicoId} = req.body;
-    console.log(servicoId)
+  
   
     await servico.findAll({
       attributes: 
@@ -16,11 +16,11 @@ const Getservico = async (req, res) => {
                 } 
                 }
         }).then( servicos => {
-          console.log(servicos)
+          //console.log(servicos)
         return  res.json(servicos)
         }).catch(error =>  { 
-          console.log(error)
-       res.status(500).json({ error: 'Ocorreu um erro ao buscar os serviços.' });
+         // console.log(error)
+       res.status(500).json({ error: 'Ocorreu um erro ao buscar os serviços.', error });
         })
   };
   

@@ -7,10 +7,8 @@ const moment = require('moment')
 const horarioDisponivel = async (req, res) => {
     const dados = req.body;
 
-
-console.log(dados)
-
 try {
+    /*
     const response = await horarioFuncionamento.findAll({
         where: {
         especialidade: dados.especialidade,
@@ -30,11 +28,15 @@ try {
             const horarios = await horarioFuncionamento.create(dados);
             return res.json(horarios);
         }
+*/
+        const horarios = await horarioFuncionamento.create(dados);
+            return res.json(horarios);
 
    // console.log(response.length)
     
 } catch (error) {
     console.log(error)
+    return res.status(500).json({error: 'erro interno no servidor', error})
 
     
 }

@@ -8,6 +8,8 @@ const db = require("../../models/db");
 const AgendasUpdate = async (req, res) => {
   const { id, nome, email, data, hora, id_especialista, servicoId } = req.body;
 
+ // console.log(req.body)
+
 
     Agendamento.update({nome, email, data,hora, id_especialista, servicoId}, {
         where:{
