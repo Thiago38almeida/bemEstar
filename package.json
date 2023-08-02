@@ -10,7 +10,7 @@
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon",
-    "vercel-build": "npm install --save pg pg-hstore  sequelize-cli db:migrate"
+    "vercel-build": "npm install --save pg pg-hstore"
   },
   "author": "",
   "license": "ISC",
