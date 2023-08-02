@@ -3,7 +3,6 @@ const Agendar = require('./rotas/agendamento/agendaPost');
 const Agendamentos = require('./rotas/agendamento/agendas');
 const AgendamentosID = require('./rotas/agendamento/agendaGetId');
 const CreateUsers = require('./rotas/users/users');
-//const LoginUsers = require('./users/login')
 const  LoginUsers = require('./rotas/users/login')
 const { eAdmin } = require('./middleware/auth');
 const CadastrarServico = require('./rotas/servico/cadastrarServico');
@@ -45,7 +44,5 @@ router.post('/agendar', Agendar)
 //Login
 router.post('/login', LoginUsers)
 router.post('/logout', LogOutUsers)
-
-//router.get( '/caixas', mundialCaixas )
 
 module.exports= router;

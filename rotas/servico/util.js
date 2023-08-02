@@ -1,7 +1,6 @@
 const moment = require('moment');
 const SMTP = require('../../config/email');
 const nodemailer = require('nodemailer');
-const logSystem  = require('../../logs/logsSystem');
 const Agendamento = require('../../models/agendamento');
 const Historico = require('../../models/historico');
 const  Sequelize =  require( "sequelize");

@@ -5,7 +5,6 @@ const router = require('./router');
 const schedule = require('node-cron');
 const util = require('./rotas/servico/util');
 const cookieParser = require('cookie-parser');
-const mundial = require('../server_qa/models/db');
 
 
 
