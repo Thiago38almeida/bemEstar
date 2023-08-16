@@ -19,6 +19,10 @@ const Historico = db.define('agendas_h',{
         allowNull: false,
 
         },
+    setor: {
+      type:Sequelize.STRING,
+      allowNull:false
+    },
         data: {
             type: Sequelize.DATE,
             allowNull: false,
@@ -34,12 +38,15 @@ const Historico = db.define('agendas_h',{
         servicoId: {
                         type: Sequelize.STRING,
                         allowNull: false,
-                       
+                        references: {
+                          model: servico,
+                          key: 'servicoId'
+                        }
                       },
 });
 
 
 
-//Historico.sync()
+Historico.sync()
 
 module.exports = Historico;

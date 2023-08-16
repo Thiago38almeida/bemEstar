@@ -60,6 +60,6 @@ horarioFuncionamento.hasOne(servico)
 horarioFuncionamento.belongsTo(servico,{ foreignKey: 'servicoId' });
 
 
-//horarioFuncionamento.sync()
+horarioFuncionamento.sync()
 
 module.exports = horarioFuncionamento;

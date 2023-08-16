@@ -9,11 +9,14 @@ const Agendar = async( req,res) => {
 
     // Validar se possui mais de 2 agendamentos no mesmo horario/dia
 
+const data = new Date(dados.data)//.format('YYYY-MM-DD')
+
+
  const { count, rows } = await Agendamento.findAndCountAll({
   where: {
     servicoId: dados.servicoId,
     data: {
-      [Op.eq]: dados.data
+      [Op.eq]:data.toISOString()
     },
     hora: {
       [Op.eq]: dados.hora
@@ -23,16 +26,22 @@ const Agendar = async( req,res) => {
   limit: 2
 });
 
+
+
+//console.log(data)
+
 const getAgendamentoPorEmail = await Agendamento.findAll({
   where: {
-    nome : dados.nome,
+    //nome : dados.nome,
     email: dados.email,
-    data: dados.data,
-   
+    data: data.toISOString()
+    
   }
 })
 
 //console.log(getAgendamentoPorEmail)
+
+
 
   if(count === 2) {
     //throw new Error("Horário já está ocupado")
@@ -44,7 +53,7 @@ const getAgendamentoPorEmail = await Agendamento.findAll({
    
  Agendamento.create(dados)
         .then((agendamento)=> {
-       
+       console.log(agendamento)
        
         //console.log(agendamento)
         const email = agendamento.email
@@ -62,7 +71,9 @@ const getAgendamentoPorEmail = await Agendamento.findAll({
          return res.status(200).json(agendamento)                       
         })
         .catch(err =>  res.status(500).json({ error: "Erro interno do servidor", err}))
-      }                       
+      }    
+  
+    
 }    
 
 module.exports= Agendar;

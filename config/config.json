@@ -1,14 +1,14 @@
 {
   "development": {
-    "username": "Thiago38almeida",
-    "password": "9LdAOBXJpl8Q",
-    "database": "bemEstar",
-    "host": "ep-blue-resonance-747536.us-east-2.aws.neon.tech",
-    "dialect": "postgres",
-    "ssl": true,
+    "username": "sistema",
+    "password": "27#*!Seg*",
+    "database": "ROBOZAP",
+    "host": "netuno",
+    "dialect": "mssql",
+    "ssl": false,
     "dialectOptions": {
       "ssl": {
-        "require": true,
+        "require": false,
         "rejectUnauthorized": false 
       }
     }

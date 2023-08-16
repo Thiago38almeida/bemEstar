@@ -15,6 +15,7 @@ const Agendas_h = require('./rotas/agendamento/agendaH');
 const GethorarioFuncionamento = require('./rotas/servico/getHorarioFuncionamento');
 const PutHorarioFuncio = require('./rotas/servico/PUTservico');
 const express = require('express');
+const GetUsers = require('./rotas/users/getUsers');
 
 
 const router = express.Router();
@@ -24,6 +25,7 @@ router.get('/agendas/:especialidade/:user',eAdmin, Agendamentos)
 router.get('/agendash/:especialidade/:user', eAdmin, Agendas_h)
 router.get('/agendas/:id',AgendamentosID )
 router.get('/horarioFuncionamento/:especialidade/:colaboradorId', eAdmin,GethorarioFuncionamento )
+router.get('/admin/users',GetUsers )
 //post
 router.post('/criar', CreateUsers)
 router.post('/criarServico', CadastrarServico)

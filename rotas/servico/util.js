@@ -157,8 +157,8 @@ module.exports = {
                 <p>Local: Espaço Bem Estar</p>
               </div>
 
-              <button ><a href="http://localhost:19006/Reagendamento?param1=${servicoId}&param2=${data}&param3=${hora}&param4=${especialidade}&ref=${id}">Agendar</a></button>
-              <button ><a href="http://localhost:19006/Cancelar?p=${id}">Cancelar</a></button>
+              <a href="http://localhost:19006/Reagendamento?param1=${servicoId}&param2=${data}&param3=${hora}&param4=${especialidade}&ref=${id}">Reagendar</a>
+              <a href="http://localhost:19006/Cancelar?p=${id}">Cancelar</a>
          
           
             </div>
