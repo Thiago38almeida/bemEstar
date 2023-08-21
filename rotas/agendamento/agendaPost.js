@@ -7,6 +7,7 @@ const {Op} = require('sequelize')
 const Agendar = async( req,res) => {
     const dados = req.body
 
+   // console.log(typeof dados.telefone)
     // Validar se possui mais de 2 agendamentos no mesmo horario/dia
 
 const data = new Date(dados.data)//.format('YYYY-MM-DD')
@@ -53,7 +54,7 @@ const getAgendamentoPorEmail = await Agendamento.findAll({
    
  Agendamento.create(dados)
         .then((agendamento)=> {
-       console.log(agendamento)
+      // console.log(agendamento)
        
         //console.log(agendamento)
         const email = agendamento.email

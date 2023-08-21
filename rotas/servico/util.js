@@ -281,6 +281,7 @@ module.exports = {
             id: agenda.dataValues.id,
             nome: agenda.dataValues.nome,
             email: agenda.dataValues.email,
+            telefone: agenda.dataValues.telefone,
             data: agenda.dataValues.data,
             hora: agenda.dataValues.hora,
             id_especialista: agenda.dataValues.id_especialista,
@@ -292,14 +293,9 @@ module.exports = {
          Historico.create(historicoData)
          .then((registro) => {
           console.log(`Registro ${registro} foi salvo no banco!`);
-          }).catch(()=>{
-            throw Error('Erro ao tentar criar registro')
-            })
-    
-         })
-    
-      
-        // Remover registros da tabela principal
+
+           // Remover registros da tabela principal
+           async function limpeza(){
         await Agendamento.destroy({
           where: {
             data: {
@@ -307,6 +303,16 @@ module.exports = {
             }
           }
         });
+        }
+        setTimeout(()=>{limpeza()}, 10);
+          }).catch(()=>{
+            throw Error('Erro ao tentar criar registro')
+            })
+    
+         })
+    
+      
+       
       }
 
     

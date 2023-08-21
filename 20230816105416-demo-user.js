@@ -1,25 +1,26 @@
 'use strict';
 
-/** @type {import('sequelize-cli').Migration} */
+/** @type {import('sequelize-cli').Migration} 
 module.exports = {
   async up (queryInterface, Sequelize) {
     
+
       await queryInterface.bulkInsert('usuarios_bemEstars', [{
-        nome: 'psicologaGLP',
-        email:'psicologaGLP@bemestar',
+        nome: 'massoterapiaMatriz',
+        email:'massoterapiaMatriz@bemestar',
         senha:"1234",
         situacao: 'A' ,
-        especialidade: 'psicologa',
+        especialidade: 'massoterapia',
         createdAt: new Date(),
         updatedAt: new Date()
       }],{})
 
       await queryInterface.bulkInsert('usuarios_bemEstars', [{
-        nome: 'psicologaMatriz',
-        email:'psicologaMatriz@bemestar',
+        nome: 'massoterapiaGLP',
+        email:'massoterapiaGLP@bemestar',
         senha:"1234",
         situacao: 'A' ,
-        especialidade: 'psicologa',
+        especialidade: 'massoterapia',
         createdAt: new Date(),
         updatedAt: new Date()
       }],{})
@@ -32,3 +33,4 @@ module.exports = {
      
   }
 };
+*/

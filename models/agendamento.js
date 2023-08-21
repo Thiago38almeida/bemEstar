@@ -19,6 +19,10 @@ const Agendamento = db.define('agendas',{
         allowNull: false,
 
         },
+        telefone: {
+          type: Sequelize.NUMERIC,
+          allowNull:false
+        },  
     setor: {
       type:Sequelize.STRING,
       allowNull:false

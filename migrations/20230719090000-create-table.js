@@ -39,6 +39,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      telefone: {
+        type: Sequelize.BIGINT(15),
+        allowNull: false,
+        },
       data: {
         type: Sequelize.DATE,
         allowNull: false,

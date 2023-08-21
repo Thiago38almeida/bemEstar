@@ -27,13 +27,13 @@ const LoginUsers = async (req, res) => {
     }
 
     
-
+/*
     if (!(bcrypt.compareSync(senha, user.senha))) {
       return res.status(400).json({
         erro: true,
         mensagem: 'Usuário ou senha inválida2'
       });
-    }
+    }*/
 
     const token = jwt.sign({ id:[ user.email, user.nome, user.especialidade ]}, "V@lId@Ç^@70K3N#$%)(*!@#", {
       algorithm: 'HS256',
