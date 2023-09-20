@@ -3,7 +3,7 @@ const { Sequelize } = require('sequelize');
 const pg = require('pg');
 require('dotenv').config();
 
-//const {SSHOST, SSDATABASE, SSUSER, SSPASSWORD} = process.env
+const {SSHOST, SSDATABASE, SSUSER, SSPASSWORD} = process.env
 const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env;
 
 
