@@ -12,7 +12,7 @@
     "dev": "nodemon",
     "migrations": "npx sequelize-cli db:migrate",
     "seeders": "npx sequelize-cli db:seed:all",
-    "vercel-build": "npm run vercel-build"
+    "vercel-build": "npm install pg"
   },
   "author": "",
   "license": "ISC",
