@@ -5,21 +5,21 @@ const db = require("../../models/db");
 //const { UPDATE } = require("sequelize/types/query-types");
 
 
-const AgendasUpdate = async (req, res) => {
-  const { id, nome, email, data, hora, id_especialista, servicoId } = req.body;
+const AgendasUpdateComparecimento = async (req, res) => {
+  const { id, comparecimento } = req.body;
 
- // console.log(req.body)
+// console.log(req.body)
 
 
-   await Agendamento.update({nome, email, data,hora, id_especialista, servicoId}, {
+    await Agendamento.update({comparecimento: comparecimento}, {
         where:{
             id
         }
     })
-    .then((resp)=>{res.json(resp)})
+    .then((resp)=>{res.status(200).json({m: "atualizado: ",resp})})
     .catch((err)=>console.log(`Error updating agenda ${ err }`))
    
   
 };
 
-module.exports = AgendasUpdate;
+module.exports = AgendasUpdateComparecimento;

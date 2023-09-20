@@ -10,6 +10,8 @@
     "start": "nodemon index.js ",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon",
+    "migrations": "npx sequelize-cli db:migrate",
+    "seeders": "npx sequelize-cli db:seed:all",
     "vercel-build": "npx sequelize-cli db:seed:all"
   },
   "author": "",

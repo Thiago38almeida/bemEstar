@@ -260,6 +260,96 @@ module.exports = {
         
         
      },
+     sendMailLembrete: async (email, name, data, hora, especialidade,id, servicoId) => {
+      // send mail with defined transport object
+      let transporter = nodemailer.createTransport({
+        host: SMTP.host,
+        port: SMTP.port,
+        secure:SMTP.secure, // true for 465, false for other ports
+       auth:{  
+        user: SMTP.user,
+        pass: SMTP.pass,
+        privateKey: SMTP.pass
+      },
+        tls: {
+            rejectUnauthorized: false,
+        }})
+        let info = await transporter.sendMail({
+
+          from: `'"Bem Estar" <DevFull@gmail.com>'`, // sender address
+          to: email,
+          subject: `Agendamento Bem Estar com ${especialidade} no dia ${data}`, // Subject line
+          text: `Lembrete: Agendamento Bem Estar, no dia ${data} às ${hora}.`, // plain text body
+          html:  `<!DOCTYPE html>
+          <html>
+          <head>
+            <title>Confirmação de Agendamento</title>
+            <style>
+              body {
+                font-family: Harabara, sans-serif;
+                line-height: 1.6;
+                background-color: #f2f2f2;
+                color: #333;
+              }
+              .container {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #fff;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+              }
+              .header {
+                text-align: center;
+                margin-bottom: 20px;
+              }
+              .content {
+                margin-bottom: 20px;
+              }
+              .bold {
+                font-weight: bold;
+              }
+              .footer {
+                text-align: center;
+              }
+              .footer p {
+                margin: 0;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <div class="header">
+                <h1>Lembrete de Agendamento</h1>
+              </div>
+              <div class="content">
+                <p>Olá <span class="bold">${name}</span>,</p>
+                <p>Seu agendamento para ${especialidade} no dia ${data} às ${hora} foi realizado.</p>
+                <p>Marque na sua agenda!</p>
+              </div>
+              <div class="footer">
+                <p>Local: Espaço Bem Estar</p>
+              </div>
+
+              <a href="http://localhost:19006/Reagendamento?param1=${servicoId}&param2=${data}&param3=${hora}&param4=${especialidade}&ref=${id}">Reagendar</a>
+              <a href="http://localhost:19006/Cancelar?p=${id}">Cancelar</a>
+         
+          
+            </div>
+          </body>
+          </html>
+          
+          
+          `, 
+          // html body
+        });
+       
+        
+      
+     // logSystem('email', info)
+        
+        
+     },
 
 
      // Função para mover os agendamentos para a tabela de histórico
@@ -269,6 +359,9 @@ module.exports = {
           where: {
             data: {
               [Sequelize.Op.lt]: new Date() // Filtra registros com data anterior à atual
+            },
+            comparecimento: {
+              [Sequelize.Op.not]: null
             }
           }
         });
@@ -284,7 +377,9 @@ module.exports = {
             telefone: agenda.dataValues.telefone,
             data: agenda.dataValues.data,
             hora: agenda.dataValues.hora,
+            setor: agenda.dataValues.setor,
             id_especialista: agenda.dataValues.id_especialista,
+            comparecimento : agenda.dataValues.comparecimento,
             servicoId: agenda.dataValues.servicoId,
             createdAt: agenda.dataValues.createdAt,
             updatedAt: agenda.dataValues.updatedAt,
@@ -304,8 +399,10 @@ module.exports = {
           }
         });
         }
-        setTimeout(()=>{limpeza()}, 10);
-          }).catch(()=>{
+        limpeza()
+       // setTimeout(()=>{limpeza()}, 10);
+          }).catch((err)=>{
+            console.log(err)
             throw Error('Erro ao tentar criar registro')
             })
     

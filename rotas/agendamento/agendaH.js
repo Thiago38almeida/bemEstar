@@ -29,7 +29,8 @@ const Agendas_h = async (req, res) =>{
    
   )
   .then(agendamentos => {
-    res.json(agendamentos);
+    console.log(agendamentos)
+   return  res.json(agendamentos);
     })
     .catch(err => {
       if (typeof err === 'string') {
@@ -37,7 +38,7 @@ const Agendas_h = async (req, res) =>{
       } else {
         console.error(JSON.stringify(err));
       }
-      res.status(500).json({ error: "Erro interno do servidor" });
+      res.status(500).json({ mensagem: "Erro interno do servidor" });
     })
   }
 

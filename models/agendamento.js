@@ -47,6 +47,10 @@ const Agendamento = db.define('agendas',{
                           key: 'servicoId'
                         }
                       },
+                      comparecimento: {
+                        type : Sequelize.BOOLEAN ,
+
+                      },
 });
 
 Agendamento.hasOne(servico)

@@ -3,9 +3,10 @@ const { Sequelize } = require('sequelize');
 const pg = require('pg');
 require('dotenv').config();
 
-//const {SSHOST, SSDATABASE, SSUSER, SSPASSWORD} = process.env
-const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env;
+const {SSHOST, SSDATABASE, SSUSER, SSPASSWORD} = process.env
+//const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env;
 
+/*
 
 const db = new Sequelize(PGDATABASE, PGUSER, PGPASSWORD, {
   host: PGHOST,
@@ -19,8 +20,8 @@ const db = new Sequelize(PGDATABASE, PGUSER, PGPASSWORD, {
   }
 });
 
+*/
 /*
-
 const db = new Sequelize('calendar', 'root', '', {
   host:'localhost' || '127.0.0.1',
   port :3306,
@@ -28,15 +29,15 @@ const db = new Sequelize('calendar', 'root', '', {
   logging:(sql)=>{console.log("SQL:", sql)},
   pool:{}
 
-})
-*/
-/*
+})*/
+
+
 const db = new Sequelize(SSDATABASE, SSUSER, SSPASSWORD, {
   host: SSHOST,
   dialect: 'mssql',
   
 });
-*/
+
 try {
   db.authenticate();
   // mundial.authenticate();

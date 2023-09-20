@@ -47,6 +47,10 @@ const Historico = db.define('agendas_hs',{
                           key: 'servicoId'
                         }
                       },
+                      comparecimento: {
+                        type : Sequelize.BOOLEAN ,
+
+                      },
 });
 
 

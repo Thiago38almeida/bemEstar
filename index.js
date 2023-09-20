@@ -3,8 +3,9 @@ const cors = require('cors');
 const app = express();
 const router = require('./router');
 const schedule = require('node-cron');
-const util = require('./rotas/servico/util');
+const util = require('./rotas/services/util');
 const cookieParser = require('cookie-parser');
+const LembreteAgendamentos = require('./rotas/services/lembreteAgendas');
 
 
 
@@ -13,11 +14,20 @@ app.use(cors());
 app.use(express.json());
 
 
-var tarefa = schedule.schedule('* 19:00 * * *', () => {
+var tarefa = schedule.schedule('21 16 * * *', () => {
     util.houseKeeping();
  });
  tarefa.start();
  app.use(cookieParser());
+
+ // enviar email com 24h de antecedência de um atendimento
+ var lembreteAgendamento = schedule.schedule('42 09 * * *', () => {
+  console.log("Lembrete");
+ 
+  LembreteAgendamentos();
+
+ })
+ lembreteAgendamento.start();
 
  app.get('/bemEstar', (req, res) => {
     // Define o cookie com o atributo "SameSite" e "Secure"

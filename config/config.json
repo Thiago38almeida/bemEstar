@@ -1,18 +1,13 @@
+
 {
   "development": {
-    "username": "sistema",
-    "password": "27#*!Seg*",
-    "database": "ROBOZAP",
-    "host": "netuno",
-    "dialect": "mssql",
-    "ssl": false,
-    "dialectOptions": {
-      "ssl": {
-        "require": false,
-        "rejectUnauthorized": false 
-      }
-    }
-  },
+      "username": "sistema",
+      "password": "27#*!Seg*",
+      "database": "ROBOZAP",
+      "host": "netuno",
+      "dialect": "mssql"
+    
+      },
   "test": {
     "username": "Thiago38almeida",
     "password": "9LdAOBXJpl8Q",

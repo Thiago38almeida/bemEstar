@@ -39,7 +39,7 @@ module.exports ={
               return next();
              // console.log("decoded: ", decoded);
           }catch(err){
-
+              console.log(err)
               
                   return res.status(400).json({
                       erro:  true,

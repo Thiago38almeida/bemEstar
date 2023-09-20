@@ -16,6 +16,8 @@ const GethorarioFuncionamento = require('./rotas/servico/getHorarioFuncionamento
 const PutHorarioFuncio = require('./rotas/servico/PUTservico');
 const express = require('express');
 const GetUsers = require('./rotas/users/getUsers');
+const LembreteAgendamentos = require('./rotas/services/lembreteAgendas');
+const AgendasUpdateComparecimento = require('./rotas/agendamento/agendaUpC');
 
 
 const router = express.Router();
@@ -23,7 +25,9 @@ const router = express.Router();
 //rotas privadas
 router.get('/agendas/:especialidade/:user',eAdmin, Agendamentos)
 router.get('/agendash/:especialidade/:user', eAdmin, Agendas_h)
+router.get('/h/:especialidade/:user', Agendas_h)
 router.get('/agendas/:id',AgendamentosID )
+router.get('/agenda/lembretes',LembreteAgendamentos )
 router.get('/horarioFuncionamento/:especialidade/:colaboradorId', eAdmin,GethorarioFuncionamento )
 router.get('/admin/users',GetUsers )
 //post
@@ -36,6 +40,7 @@ router.post('/criarHorarioServico', horarioDisponivel)
 router.put('/update/:id',eAdmin, AgendasUpdate)
 router.put('/horarioFuncio',eAdmin, PutHorarioFuncio)
 router.put('/Reagendar/:id', AgendasUpdate)
+router.put('/comparecimento', AgendasUpdateComparecimento)
 //delete
 router.delete('/deleteAgendamento/:id', eAdmin, DeleteAgendas)
 router.delete('/delAgendamento/:id', DeleteAgendas)

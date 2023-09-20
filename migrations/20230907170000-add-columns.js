@@ -7,13 +7,13 @@ module.exports = {
       return Promise.all([
      queryInterface.addColumn('agendas', 'comparecimento', {
       type: Sequelize.STRING,
-      allowNull: true
-    }),
+     // allowNull: true
+    }, { transaction: t }),
 
-     queryInterface.addColumn('agendas_h', 'comparecimento', {
+     queryInterface.addColumn('agendas_hs', 'comparecimento', {
       type: Sequelize.STRING,
-      allowNull: true
-    })
+    //  allowNull: true
+    }, { transaction: t })
   
   ]);
 })},
@@ -31,7 +31,7 @@ module.exports = {
       return queryInterface.sequelize.transaction(t => {
         return Promise.all([
           queryInterface.removeColumn('agendas', 'comparecimento'),
-          queryInterface.removeColumn('agendas_h', 'comparecimento')
+          queryInterface.removeColumn('agendas_hs', 'comparecimento')
         ]);
       });
     }

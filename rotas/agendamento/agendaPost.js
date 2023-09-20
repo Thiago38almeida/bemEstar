@@ -1,5 +1,5 @@
 const Agendamento = require('../../models/agendamento')
-const util = require('../servico/util')
+const util = require('../services/util')
 const moment = require('moment')
 const {Op} = require('sequelize')
 
@@ -29,7 +29,7 @@ const data = new Date(dados.data)//.format('YYYY-MM-DD')
 
 
 
-//console.log(data)
+//console.log(dados)
 
 const getAgendamentoPorEmail = await Agendamento.findAll({
   where: {
@@ -48,7 +48,7 @@ const getAgendamentoPorEmail = await Agendamento.findAll({
     //throw new Error("Horário já está ocupado")
     res.status(400).json({mensagem: 'horarios já ocupado'})
   } else if (getAgendamentoPorEmail.length > 0) {
-    res.status(400).json({erro: 'Limite de agendamento atingido para o mesmo dia!'})
+    res.status(400).json({mensagem: 'Limite de agendamento atingido para o mesmo dia!'})
   }
   else{
    
@@ -71,7 +71,7 @@ const getAgendamentoPorEmail = await Agendamento.findAll({
        //console.log(email)
          return res.status(200).json(agendamento)                       
         })
-        .catch(err =>  res.status(500).json({ error: "Erro interno do servidor", err}))
+        .catch(err =>  res.status(500).json({ mensagem: "Erro interno do servidor", err}))
       }    
   
     

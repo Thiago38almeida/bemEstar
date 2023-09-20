@@ -1,5 +1,5 @@
 const Agendamento = require("../../models/agendamento");
-const util = require("../servico/util");
+const util = require("../services/util");
 const moment = require('moment');
 
 

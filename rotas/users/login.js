@@ -15,7 +15,7 @@ const LoginUsers = async (req, res) => {
       attributes: ['nome', 'email', 'senha', 'especialidade', 'situacao'],
       where: {
         email: email,
-        situacao: 'A'
+        //situacao: 'A'
       }
     });
 
@@ -37,7 +37,7 @@ const LoginUsers = async (req, res) => {
 
     const token = jwt.sign({ id:[ user.email, user.nome, user.especialidade ]}, "V@lId@Ç^@70K3N#$%)(*!@#", {
       algorithm: 'HS256',
-      expiresIn: '24h'
+      expiresIn: 60
     });
 
      
